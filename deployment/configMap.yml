@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: z-config
+  namespace: healthlink-namespace
+data:
+  DB_HOST: "moradev-mora-dev.f.aivencloud.com"
+  DB_USER: "avnadmin"
+  DB_NAME: "healthlink"
+  DB_PORT: "27746"
+  LINE_BREAKER_1: " New Line Break "
+  REACT_APP_API_URL: "http://healthlink/api/"

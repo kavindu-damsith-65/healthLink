@@ -1,6 +1,6 @@
 import axios from "axios";
 import Swal from "sweetalert2";
-
+import {HostUrl} from  '../Host'
 
 const Toast = Swal.mixin({ toast: true, position: 'top-end', showConfirmButton: false, timer: 2500, timerProgressBar: true, })
 
@@ -8,7 +8,7 @@ const Toast = Swal.mixin({ toast: true, position: 'top-end', showConfirmButton: 
 export function defaultReq(method,url,data,callback1=null,callback2=null,callback3=null){
     var options = {
         method:method,
-        url: 'http://localhost:3001/'+url,
+        url: HostUrl+url,
         headers: {
             'Content-Type': 'application/json',
             Authorization: 'Bearer ' + localStorage.getItem("token")
@@ -42,7 +42,7 @@ export function defaultReq(method,url,data,callback1=null,callback2=null,callbac
 export function swalFireReq1(method,url,data,swal1=null,swal2=null,callback1=null,swal3=null){
     var options = {
         method:method,
-        url: 'http://localhost:3001/'+url,
+        url: HostUrl+url,
         headers: {
             'Content-Type': 'application/json',
             Authorization: 'Bearer ' + localStorage.getItem("token")
@@ -83,7 +83,7 @@ export function swalFireReq1(method,url,data,swal1=null,swal2=null,callback1=nul
 export function swalFireReq2(method,url,data,swal1=null,swal2=null,callback1=null,swal3=null){
     var options = {
         method:method,
-        url: 'http://localhost:3001/'+url,
+        url: HostUrl+url,
         headers: {
             'Content-Type': 'application/json',
             Authorization: 'Bearer ' + localStorage.getItem("token")

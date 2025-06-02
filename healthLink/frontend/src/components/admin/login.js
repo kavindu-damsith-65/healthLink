@@ -5,6 +5,7 @@ import Alert from '@mui/material/Alert';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import {HostUrl} from "../../Host";
 
 const Toast = Swal.mixin({ toast: true, position: 'top-end', showConfirmButton: false, timer: 2500, timerProgressBar: true, })
 
@@ -18,7 +19,7 @@ export default function Login() {
 
     const handelLogin = () => {
         if (email && password) {
-            axios.post('http://localhost:3001/user/admin/login', {email:email,password:password}).then(response => {
+            axios.post(HostUrl+'user/admin/login', {email:email,password:password}).then(response => {
                 const responseStatus = response.status;
 
                 if (responseStatus === 200 | responseStatus === 201) {

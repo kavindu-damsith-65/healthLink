@@ -1,0 +1,13 @@
+echo -n "your-secret-value" | base64
+
+
+kubectl apply -f backend.yml
+kubectl get  all -n healthlink-namespace
+
+kubectl get configmap healthlink-backend-config -n healthlink-namespace -o yaml
+kubectl get secret healthlink-backend-secret -n healthlink-namespace -o yaml
+
+
+kubectl rollout restart deployment healthlink-backend-deployment -n healthlink-namespace
+
+minikube addons enable ingress

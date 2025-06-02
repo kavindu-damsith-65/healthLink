@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: healthlink-frontend-deployment
+  namespace: healthlink-namespace
+spec:
+  replicas: 2
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: healthlink-frontend
+  template:
+    metadata:
+      labels:
+        app: healthlink-frontend
+    spec:
+      containers:
+        - name: healthlink-frontend
+          image: kavindudamisith/healthlinkfront:v1  # Replace with your actual frontend image
+          ports:
+            - containerPort: 80  # Nginx serves on port 80
+#          env:
+#            - name: REACT_APP_API_URL
+#              valueFrom:
+#                configMapKeyRef:
+#                  name: healthlink-frontend-config
+#                  key: REACT_APP_API_URL
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: healthlink-frontend-service
+  namespace: healthlink-namespace
+spec:
+  type: NodePort  # Exposes it on a Minikube-accessible port
+  selector:
+    app: healthlink-frontend
+  ports:
+    - protocol: TCP
+      port: 80       # Service port
+      targetPort: 80 # Nginx container port
+      nodePort: 30002 # Exposed port (Minikube range: 30000-32767)

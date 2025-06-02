@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 import * as reqSend from "../../global/reqSender";
 import Swal from "sweetalert2";
+import {HostUrl} from "../../Host";
 
 
 export default function AddReport(props) {
@@ -28,7 +29,7 @@ export default function AddReport(props) {
 
       useEffect(() => {
         if (locationStateFromAppoint.doctor_id) {
-            axios.post('http://localhost:3001/appointment/getdoctorbyid', {doctor_id:locationStateFromAppoint.doctor_id}).then(response => {
+            axios.post(HostUrl+'appointment/getdoctorbyid', {doctor_id:locationStateFromAppoint.doctor_id}).then(response => {
                 const responseStatus = response.status;
 
                 if (responseStatus === 200 || responseStatus === 201) {
@@ -78,7 +79,7 @@ export default function AddReport(props) {
             description: 'description test'
         }
 
-        axios.post('http://localhost:3001/appointment/add-report', submitData, {
+        axios.post(HostUrl+'appointment/add-report', submitData, {
             headers: {
               'Content-Type': 'application/json',
             }

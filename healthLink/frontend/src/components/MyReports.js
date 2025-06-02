@@ -18,6 +18,7 @@ import reportSample from '../assets/reportSample.png';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 import axios from 'axios';
+import {HostUrl} from "../Host";
 
 
 const doctorImages = [doc1, doc2, doc3, doc4, doc5, doc6];
@@ -39,7 +40,7 @@ export default function MyReports(props) {
 
     useEffect(() => {
         if (localStorage.getItem('userId')) {
-            axios.post('http://localhost:3001/appointment/myreports/user', {user_id: localStorage.getItem('userId')}).then(response => {
+            axios.post(HostUrl+'appointment/myreports/user', {user_id: localStorage.getItem('userId')}).then(response => {
                 const responseStatus = response.status;
 
                 if (responseStatus === 200 || responseStatus === 201) {

@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Modal from 'react-bootstrap/Modal';
+import {HostUrl} from "../Host";
 
 
 function NavBar(props) {
@@ -101,7 +102,7 @@ function NavBar(props) {
         }
 
         try {
-            axios.post('http://localhost:3001/user/sign-up', signInFormData).then(response => {
+            axios.post(HostUrl+'user/sign-up', signInFormData).then(response => {
 
                 const responseStatusReg = response.status;
                 if (responseStatusReg === 200 || responseStatusReg === 201) {
@@ -112,7 +113,7 @@ function NavBar(props) {
 
 
 
-                    axios.post('http://localhost:3001/user/login', registeredUser).then(response2 => {
+                    axios.post(HostUrl+'user/login', registeredUser).then(response2 => {
                         const responseStatusLog = response2.status;
                         if (responseStatusLog === 200 || responseStatusLog === 201) {
 
@@ -175,7 +176,7 @@ function NavBar(props) {
             }
 
 
-            axios.post('http://localhost:3001/user/login', loginFormData).then(response => {
+            axios.post(HostUrl+'user/login', loginFormData).then(response => {
                 const responseStatus = response.status;
 
                 if (responseStatus === 200 | responseStatus === 201) {

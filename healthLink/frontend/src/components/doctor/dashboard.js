@@ -10,6 +10,7 @@ import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import AddReport from './AddReport';
 import MRI from './MRI';
+import {HostUrl} from "../../Host";
 // import Home from './Home';
 // import AddDoctors from './AddDoctors';
 
@@ -28,7 +29,7 @@ export default function DoctorDashboard() {
 
     useEffect(() => {
          if (doctor_id) {
-            axios.post('http://localhost:3001/appointment/patients', {doctor_id:doctor_id}).then(response => {
+            axios.post(HostUrl+'appointment/patients', {doctor_id:doctor_id}).then(response => {
                 const responseStatus = response.status;
 
                 if (responseStatus === 200 | responseStatus === 201) {

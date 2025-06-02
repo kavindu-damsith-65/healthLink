@@ -3,7 +3,7 @@ const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const dbPool = require('../db');
 const crypto = require('crypto');
-
+require('dotenv').config();
 
 
 
@@ -131,6 +131,7 @@ function login(req, res) {
 
 function adminLogin(req, res) {
     const { email, password } = req.body;
+
 
     try {
         dbPool.query('SELECT password,id,email,role FROM admin WHERE email = ?', [email], (error, results) => {

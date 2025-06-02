@@ -16,8 +16,8 @@ app.use(cors());
 // app.use(cors({ origin: 'http://20.194.199.67:3000'}));
 
 app.use(bodyParser.json());
-app.use("/user", userRoute);
-app.use("/appointment", appointmentRoute);
-app.use("/admin", adminDashboardRoute);
+app.use("/api/user", userRoute);
+app.use("/api/appointment", appointmentRoute);
+app.use("/api/admin", adminDashboardRoute);
 
 module.exports = app;
